@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.dumptruckloads.truckcalc.ui.MainActivity">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="model"
+            type="com.dumptruckloads.truckcalc.model.HaulDifferenceViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include android:id="@+id/track_actionbar"
+                 android:layout_width="match_parent"
+                 android:layout_height="@dimen/black_bg_height"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintTop_toTopOf="parent"
+                 layout="@layout/track_actionbar_layout"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="@dimen/percent_input_field"/>
+
+        <TextView
+            android:id="@+id/text_label_select_unit"
+            style="@style/Text.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
+            android:layout_marginTop="@dimen/margin_header_top"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:text="@string/label_select_a_unit_of_measure"
+            android:textColor="#ffffff"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/track_actionbar"/>
+
+        <View
+            android:id="@+id/view_highlight0"
+            style="@style/Highlight"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/black_bg_height"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_select_unit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_label_select_unit"/>
+
+        <android.support.v7.widget.SwitchCompat
+            app:onCheckedChanged="@{model.metricCheckedChangeListener}"
+            android:id="@+id/switch_unit_selector"
+            android:layout_width="@dimen/unit_switch_width"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/margin_side"
+            android:elevation="1dp"
+            android:theme="@style/UnitSwitch"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_select_unit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            android:checked="false"
+            android:textColor="#008F36"
+            app:showText="false"/>
+
+        <TextView
+            android:id="@+id/text_label_ton_unit"
+            style="@style/Text.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/switch_txt_item_margin_side"
+            android:layout_marginTop="@dimen/switch_txt_item_margin_top"
+            android:elevation="1dp"
+            android:text="@string/label_select_a_unit_ton"
+            android:textColor="#FFB005"
+            app:layout_constraintEnd_toStartOf="@+id/switch_unit_selector"
+            app:layout_constraintTop_toBottomOf="@+id/track_actionbar"/>
+
+        <TextView
+            android:id="@+id/text_label_cy_unit"
+            style="@style/Text.Label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/switch_txt_item_margin_side"
+            android:layout_marginStart="@dimen/switch_txt_item_margin_side"
+            android:layout_marginTop="@dimen/switch_txt_item_margin_top"
+            android:elevation="1dp"
+            android:text="@string/label_select_a_unit_cy"
+            android:textColor="#BFBFBF"
+            app:layout_constraintStart_toEndOf="@+id/switch_unit_selector"
+            app:layout_constraintTop_toBottomOf="@+id/track_actionbar"/>
+
+        <TextView
+            android:id="@+id/text_label_minutes_difference"
+            style="@style/Text.Label"
+            android:enabled="@{model.minutesDifferenceValid}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical_f"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:labelFor="@+id/edit_min_minutes_difference"
+            android:text="@string/label_minutes_difference_one_way"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_select_unit"/>
+
+        <View
+            android:id="@+id/view_label_minutes_difference_bg"
+            style="@style/is_valid"
+            android:enabled="@{model.minutesDifferenceValid}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/error_bg_height_2l"
+            app:layout_constraintTop_toTopOf="@+id/text_label_minutes_difference"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_minutes_difference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <com.dumptruckloads.truckcalc.util.NumericEditText
+            android:id="@+id/edit_min_minutes_difference"
+            style="@style/Input.Count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:inputType="numberSigned|numberDecimal"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:text="@{model.minutesDifference}"
+            android:textColor="@{model.minutesDifferenceValid ? @color/text_label_text_enabled : @color/text_label_text_disabled}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_label_minutes_difference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:textChangedListener="@{model.minutesDifferenceTextWatcher}"
+            tools:text="5"/>
+
+        <TextView
+            android:id="@+id/text_label_avg_truck_load"
+            style="@style/Text.Label"
+            android:enabled="@{model.avgLoadPerTruckValid}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:labelFor="@+id/edit_avg_truck_load"
+            android:text="@{model.metricSystem ? @string/label_avg_load_per_truck_in_tons : @string/label_avg_load_per_truck_in_cy}"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_minutes_difference"
+            tools:text="@string/label_avg_load_per_truck_in_tons"/>
+
+        <View
+            android:id="@+id/view_label_avg_truck_load_bg"
+            style="@style/is_valid"
+            android:enabled="@{model.avgLoadPerTruckValid}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/error_bg_height"
+            app:layout_constraintTop_toTopOf="@+id/text_label_avg_truck_load"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_avg_truck_load"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <com.dumptruckloads.truckcalc.util.NumericEditText
+            android:id="@+id/edit_avg_truck_load"
+            style="@style/Input.Count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:inputType="numberSigned|numberDecimal"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:text="@{model.avgLoadPerTruck}"
+            android:textColor="@{model.avgLoadPerTruckValid ? @color/text_label_text_enabled : @color/text_label_text_disabled}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_label_avg_truck_load"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:textChangedListener="@{model.avgLoadPerTruckWatcher}"
+            tools:text="23"/>
+
+        <TextView
+            android:id="@+id/text_label_truck_rate_per_hour"
+            style="@style/Text.Label"
+            android:enabled="@{model.truckRatePerHourValid}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:labelFor="@+id/edit_avg_truck_rate_per_hour"
+            android:text="@string/label_truck_rate_per_hour"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_avg_truck_load"/>
+
+        <View
+            android:id="@+id/view_label_truck_rate_per_hour_bg"
+            style="@style/is_valid"
+            android:enabled="@{model.truckRatePerHourValid}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/error_bg_height"
+            app:layout_constraintTop_toTopOf="@+id/text_label_truck_rate_per_hour"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_truck_rate_per_hour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <com.dumptruckloads.truckcalc.util.DollarEditText
+            android:id="@+id/edit_avg_truck_rate_per_hour"
+            style="@style/Input.Price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:inputType="numberSigned|numberDecimal"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+            android:text="@{model.truckRatePerHour}"
+            android:textColor="@{model.truckRatePerHourValid ? @color/text_label_text_enabled : @color/text_label_text_disabled}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_label_truck_rate_per_hour"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:textChangedListener="@{model.truckRatePerHourWatcher}"
+            tools:text="$110.00"/>
+
+        <TextView
+            android:id="@+id/text_label_cost_difference"
+            style="@style/Text.Caption"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_vertical"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:elevation="1dp"
+            android:text="@{model.metricSystem ? @string/label_cost_difference_per_ton : @string/label_cost_difference_per_cy}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label_truck_rate_per_hour"
+            tools:text="@string/label_cost_difference_per_ton"/>
+
+        <TextView
+            android:id="@+id/text_cost_difference"
+            style="@style/Text.Caption.Highlight"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:elevation="1dp"
+            android:maxLines="1"
+            android:text="@{model.costDifference}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/text_label_cost_difference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/text_label_cost_difference"
+            tools:text="$1.47"/>
+
+        <View
+            android:id="@+id/view_highlight1"
+            style="@style/Highlight"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/black_bg_height"
+            app:layout_constraintBottom_toBottomOf="@+id/text_label_cost_difference"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_label_cost_difference"/>
+
+        <ImageView
+            android:id="@+id/background_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_bg"
+            app:layout_constraintTop_toBottomOf="@+id/view_highlight1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/text_label_done"
+            style="@style/Text.Caption"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/black_bg_height"
+            android:textSize="20sp"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:labelFor="@+id/edit_avg_load_per_truck"
+            android:text="@string/label_done"
+            android:background="@color/doneButtonYellow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="@{model.allInputValidBoolForLabel ? View.VISIBLE : View.GONE}"
+            />
+
+        <TextView
+            android:id="@+id/text_label_error"
+            style="@style/Text.ErrorLabel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/black_bg_height"
+            android:elevation="1dp"
+            android:text="@string/label_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="@{model.allInputValidBoolForLabel ? View.GONE : View.VISIBLE}"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

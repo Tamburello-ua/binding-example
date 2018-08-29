@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">DumpTruckMath</string>
+
+    <string name="dump_trucks_url">http://DumpTruckLoads.com</string>
+    <string name="dump_trucks_email">mathfeedback@dumptruckloads.com</string>
+    <string name="dump_trucks_email_subject">Dump Truck Math Feedback.</string>
+    <string name="dump_trucks_email_message">What new features would you like to see? \n\n\nHow can we improve the app?</string>
+
+    <string name="label_done">Done</string>
+    <string name="label_error">To calculate the result, please fill in all of the fields!</string>
+
+<!-- Info Popup -->
+    <string name="text_info_rpt">@string/main_group1_txt</string>
+    <string name="text_info_tn">@string/main_group2_txt</string>
+    <string name="text_info_hd">@string/main_group3_txt</string>
+    <string name="info_dtm">@string/header_top_txt</string>
+    <string name="info_bty">@string/header_bottom_txt</string>
+    <string name="info_url">DumpTruckLoads.com</string>
+    <string name="info_rateus">Rate Us</string>
+    <string name="info_please_rateus">PLEASE RATE US</string>
+
+<!-- Splash Activity -->
+    <string name="header_bottom_txt">Brought to you by</string>
+    <string name="header_url_txt"><u>DumpTruckLoads.com</u></string>
+
+<!-- Main Activity -->
+    <string name="main_header">CHOOSE YOUR WORKSHEET</string>
+    <string name="main_group1_txt">Convert your hourly rate into a tonnage or CY rate that factors in your tolls and travel time, as well as loading and unloading times.</string>
+    <string name="button_rate_per_ton">RATE PER TON OR CY</string>
+    <string name="main_group2_txt">You know how long it takes to load each truck and you know how long the round trip will take. How many trucks will you need?</string>
+    <string name="button_trucks_needed">TRUCKS NEEDED</string>
+    <string name="main_group3_txt">What\'s the per ton or per CY cost difference between two locations?</string>
+    <string name="button_haul_difference">HAUL DIFFERENCE</string>
+
+<!-- RatePerTon Activity -->
+    <string name="label_info_rpt">Rate per Ton or CY</string>
+    <string name="label_hourly_rate_of_truck">Hourly rate of truck:</string>
+    <string name="label_tolls">Tolls (round trip):</string>
+    <string name="label_time_in_minutes">Travel time in minutes (one way):</string>
+    <string name="label_loading_time_minutes">Loading time (minutes):</string>
+    <string name="label_uploading_time_minutes">Unloading time (minutes):</string>
+    <string name="label_avg_load_per_truck_in_tons">Avg. load per truck in tons:</string>
+    <string name="label_avg_load_per_truck_in_cy"  >Avg. load per truck in CY:</string>
+    <string name="label_cost_per_ton">COST PER TON:</string>
+    <string name="label_cost_per_cy" >COST PER CY:</string>
+    <string name="label_hours_per_round_trip">TOTAL TIME PER ROUND TRIP:</string>
+    <string name="label_round_trips_per_day">Round trips per day:</string>
+    <string name="label_revenue_per_day">GROSS REVENUE PER DAY:</string>
+
+<!-- TrucksNeeded Activity -->
+    <string name="label_info_tn">Trucks Needed</string>
+    <string name="label_min_needed_to_load_each_truck">Minutes needed to load each truck:</string>
+    <string name="label_tons_loaded_per_hour">TONS LOADED PER HOUR:</string>
+    <string name="label_cy_loaded_per_hour">CY LOADED PER HOUR:</string>
+    <string name="label_truck_round_trip_time_in_min">Truck round trip time in minutes:</string>
+    <string name="label_number_of_trucks_needed">NUMBER OF TRUCKS NEEDED:</string>
+
+<!-- HaulDifference Activity -->
+    <string name="label_info_hd">Haul Difference</string>
+    <string name="label_minutes_difference_one_way">Difference in driving time between two sites (one way, in minutes):</string>
+    <string name="label_truck_rate_per_hour">Truck rate per hour:</string>
+    <string name="label_cost_difference_per_ton">COST DIFFERENCE PER TON:</string>
+    <string name="label_cost_difference_per_cy">COST DIFFERENCE PER CY:</string>
+
+<!-- ActionBar -->
+    <string name="label_select_a_unit_of_measure">Select a unit of measure:</string>
+    <string name="label_ton">Ton</string>
+    <string name="label_cy">CY</string>
+    <string name="header_top_txt">Dump Truck Math</string>
+    <string name="label_select_a_unit_ton">@string/label_ton</string>
+    <string name="label_select_a_unit_cy">@string/label_cy</string>
+    <string name="ateus_later_button_txt">Later</string>
+    <string name="rateus_letsgo_button_txt">Let\'s go</string>
+
+</resources>

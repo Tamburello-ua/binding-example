@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/information_dialog_close"
+            android:src="@drawable/info_close"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/margin_info_top"
+            android:layout_marginRight="@dimen/margin_info_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:fontFamily="@font/oswald_bold"
+            android:textColor="#000"
+            tools:text="Haul difference"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_close"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_information_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:layout_marginRight="@dimen/margin_side"
+            android:layout_marginTop="@dimen/margin_header_top"
+            android:fontFamily="@font/mako_regular"
+            android:textColor="#3D3D3D"
+            android:text="@string/text_info_tn"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_title_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <ImageView
+            android:id="@+id/information_dialog_information_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_side"
+            android:src="@drawable/logo_popup"
+            app:layout_constraintStart_toStartOf="@+id/information_dialog_information_text"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_information_text"
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_logo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/depressionist_3_revisited"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:textColor="#000"
+            android:text="@string/info_dtm"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@+id/information_dialog_information_logo"
+            app:layout_constraintBottom_toBottomOf="@+id/information_dialog_information_logo"
+            app:layout_constraintStart_toEndOf="@+id/information_dialog_information_logo"
+
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_bottom_text"
+            style="@style/Text.MainHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:layout_marginTop="@dimen/margin_side"
+            android:layout_marginBottom="@dimen/margin_side"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:text="@string/info_bty"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_information_logo"
+            app:layout_constraintStart_toStartOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_bottom_url"
+            style="@style/Text.MainHeaderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/margin_side"
+            android:layout_marginTop="@dimen/margin_side"
+            android:textColor="#048CD7"
+            android:textSize="14sp"
+            android:text="@string/info_url"
+            app:layout_constraintLeft_toRightOf="@id/information_dialog_bottom_text"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_information_logo"
+            />
+
+        <View
+            android:id="@+id/first_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#E5E5E5"
+            android:layout_marginTop="@dimen/ma_list_item_margin_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/information_dialog_bottom_url"
+            />
+
+        <TextView
+            android:id="@+id/information_dialog_rateus_button"
+            style="@style/Text.MainHeaderText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_side"
+            android:layout_marginLeft="@dimen/margin_side"
+            android:layout_marginTop="@dimen/ma_list_item_margin_top"
+            android:paddingBottom="@dimen/margin_side"
+            android:textColor="#048CD7"
+            android:textSize="14sp"
+            android:text="@string/info_rateus"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/first_divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

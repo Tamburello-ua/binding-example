@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+apply from: "dependencies.gradle"
+apply from: "$project.rootDir/keystore/signing-config.gradle"
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    defaultConfig {
+        applicationId config.appId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+    }
+
+    dataBinding.enabled = true
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-debug"
+        }
+
+        release {
+            signingConfig signingConfigs.release
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            if (project.hasProperty('changeLog') && changeLog.length() > 0) {
+                ext.betaDistributionReleaseNotes = changeLog
+            }
+            ext.betaDistributionEmailsFilePath = "$project.rootDir/tools/beta-distribution-emails.txt"
+            ext.betaDistributionNotifications = true
+        }
+    }
+}
+
+dependencies {
+    compile 'org.apache.commons:commons-lang3:3.6'
+}
